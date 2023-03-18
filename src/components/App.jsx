@@ -14,32 +14,32 @@ export class App extends Component {
     filter: '',
   };
 
-  // createUser = userData => {
-  //   const isExist = this.state.contacts.find(contact => {
-  //     return contact.userName === userData.userName;
-  //   });
-  //   isExist
-  //     ? alert(`${userData.userName} is already in contacts`)
-  //     : this.setState(prevState => {
-  //         return { contacts: [...prevState.contacts, userData] };
-  //       });
-  // };
+  createUser = userData => {
+    const isExist = this.state.contacts.find(contact => {
+      return contact.userName === userData.userName;
+    });
+    isExist
+      ? alert(`${userData.userName} is already in contacts`)
+      : this.setState(prevState => {
+          return { contacts: [...prevState.contacts, userData] };
+        });
+  };
 
-  // getInput = ({ target: { name, value } }) => {
-  //   this.setState({ [name]: value });
-  // };
+  getInput = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
-  // filterContacts = () => {
-  //   this.state.contacts.filter(contact =>
-  //     contact.userName.toLowerCase().includes(this.state.filter.toLowerCase())
-  //   );
-  // };
+  filterContacts = () => {
+    this.state.contacts.filter(contact =>
+      contact.userName.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
 
-  // deleteContact = contactId => {
-  //   this.setState(prevState => ({
-  //     contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     return (
