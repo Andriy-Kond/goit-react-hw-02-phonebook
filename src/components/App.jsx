@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { UserForm } from './UserForm/UserForm';
 import { Contacts } from './Contacts/Contacts';
-// import { Filter } from './Filter/Filter';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -47,7 +47,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <UserForm createUser={this.createUser}></UserForm>
         <h2>Contacts</h2>
-        {/* <Filter filter={this.state.filter} getInput={this.getInput}></Filter> */}
+        <Filter filter={this.state.filter} getInput={this.getInput}></Filter>
         <Contacts
           contacts={this.state.contacts}
           deleteContact={this.deleteContact}
