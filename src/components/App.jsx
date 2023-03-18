@@ -58,10 +58,3 @@ export class App extends Component {
     );
   }
 }
-
-//  =====================================
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import css from './Feedback.module.css';
-// import clsx from 'clsx';
-// import { Component } from 'react';

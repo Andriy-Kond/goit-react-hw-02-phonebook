@@ -10,12 +10,7 @@ export class UserForm extends Component {
   };
 
   getInput = ({ target: { name, value } }) => {
-    // для такого запису треба давати інпуту ту ж назву, що і у state: name="name"
     this.setState({ [name]: value });
-
-    // Інакше доведеться кожен раз робити пошук потрібної властивості в об'єкті state.
-    // Якщо властивість одна, то можна записати і так:
-    // this.setState({ name: value }) ;
   };
 
   setName = e => {
@@ -26,7 +21,7 @@ export class UserForm extends Component {
       userNumber: this.state.number,
       id: nanoid(),
     });
-    // Очищення полів вводу форми після додавання нового контакту, або повідомлення, що контакт вже інсує:
+
     this.setState({ name: '', number: '' });
   };
 
@@ -46,12 +41,6 @@ export class UserForm extends Component {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
-              // викликати колл-бек у стрілці потрібно лише якщо або щось дуже коротке.
-              // Наприклад, таке: onChange={(e) => { console.log(e.target) }}
-              // або коли у функцію треба передати значення
-              // onChange={e => {
-              //   this.getInput(e.target.value);
-              // }}
               onChange={this.getInput}
               value={this.state.name}
             />
