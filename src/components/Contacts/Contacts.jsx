@@ -1,18 +1,20 @@
-// import PropTypes from 'prop-types';
-// import css from './Contacts.module.css' ;
+import PropTypes from 'prop-types';
+import css from './Contacts.module.css';
 
 function MarkupContacts(userName, userNumber, id, deleteContact) {
   return (
-    <li key={id}>
+    <li className={css.listItem} key={id}>
       {userName}: {userNumber}
-      <button onClick={() => deleteContact(id)}>Delete</button>
+      <button className={css.deleteBtn} onClick={() => deleteContact(id)}>
+        Delete
+      </button>
     </li>
   );
 }
 
 export const Contacts = ({ contacts, deleteContact, filter }) => {
   return (
-    <ul>
+    <ul className={css.list}>
       {filter
         ? contacts
             .filter(({ userName }) =>
@@ -26,4 +28,16 @@ export const Contacts = ({ contacts, deleteContact, filter }) => {
           })}
     </ul>
   );
+};
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string,
+      userName: PropTypes.string,
+      userNumber: PropTypes.string,
+    })
+  ),
+  deleteContact: PropTypes.func,
+  filter: PropTypes.string,
 };

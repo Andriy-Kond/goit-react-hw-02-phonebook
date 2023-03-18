@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { UserForm } from './UserForm/UserForm';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -43,7 +44,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className={css.mainContainer}>
         <h1>Phonebook</h1>
         <UserForm createUser={this.createUser}></UserForm>
         <h2>Contacts</h2>
