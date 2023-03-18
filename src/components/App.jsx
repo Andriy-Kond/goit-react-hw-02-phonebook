@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { UserForm } from './UserForm/UserForm';
-// import { Contacts } from './Contacts/Contacts';
+import { Contacts } from './Contacts/Contacts';
 // import { Filter } from './Filter/Filter';
 
 export class App extends Component {
@@ -48,11 +48,11 @@ export class App extends Component {
         <UserForm createUser={this.createUser}></UserForm>
         <h2>Contacts</h2>
         {/* <Filter filter={this.state.filter} getInput={this.getInput}></Filter> */}
-        {/* <Contacts
+        <Contacts
           contacts={this.state.contacts}
           deleteContact={this.deleteContact}
           filter={this.state.filter}
-        ></Contacts> */}
+        ></Contacts>
       </div>
     );
   }
