@@ -1,5 +1,5 @@
 import { Component } from 'react';
-// import { UserForm } from './UserForm/UserForm';
+import { UserForm } from './UserForm/UserForm';
 // import { Contacts } from './Contacts/Contacts';
 // import { Filter } from './Filter/Filter';
 
@@ -45,10 +45,10 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        {/* <UserForm createUser={this.createUser}></UserForm>
+        <UserForm createUser={this.createUser}></UserForm>
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} getInput={this.getInput}></Filter>
-        <Contacts
+        {/* <Filter filter={this.state.filter} getInput={this.getInput}></Filter> */}
+        {/* <Contacts
           contacts={this.state.contacts}
           deleteContact={this.deleteContact}
           filter={this.state.filter}

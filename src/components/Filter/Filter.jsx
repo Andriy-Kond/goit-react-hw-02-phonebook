@@ -1,0 +1,17 @@
+// import css from './Filter.module.css';
+// import PropTypes from 'prop-types' ;
+
+export const Filter = ({ filter, getInput }) => {
+  return (
+    <>
+      <label htmlFor="searchInput">Find contacts by name</label>
+      <input
+        id="searchInput"
+        type="text"
+        name="filter"
+        onChange={getInput}
+        value={filter}
+      />
+    </>
+  );
+};
