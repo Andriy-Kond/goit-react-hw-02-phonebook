@@ -43,16 +43,17 @@ export class App extends Component {
   };
 
   render() {
+    const { filter, contacts } = this.state;
     return (
       <div className={css.mainContainer}>
         <h1>Phonebook</h1>
         <UserForm createUser={this.createUser}></UserForm>
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} getInput={this.getInput}></Filter>
+        <Filter filter={filter} getInput={this.getInput}></Filter>
         <Contacts
-          contacts={this.state.contacts}
+          contacts={contacts}
           deleteContact={this.deleteContact}
-          filter={this.state.filter}
+          filter={filter}
         ></Contacts>
       </div>
     );
