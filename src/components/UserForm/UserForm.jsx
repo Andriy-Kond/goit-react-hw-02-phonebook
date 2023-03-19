@@ -21,6 +21,9 @@ export class UserForm extends Component {
       userNumber: this.state.number,
       id: nanoid(),
     });
+
+    // Очистити поля форми:
+    this.setState({ name: '', number: '' });
   };
 
   render() {
