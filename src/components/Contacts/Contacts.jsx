@@ -33,11 +33,11 @@ export const Contacts = ({ contacts, deleteContact, filter }) => {
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
-      id: PropTypes.string,
-      userName: PropTypes.string,
-      userNumber: PropTypes.string,
+      id: PropTypes.string.isRequired,
+      userName: PropTypes.string.isRequired,
+      userNumber: PropTypes.string.isRequired,
     })
-  ),
-  deleteContact: PropTypes.func,
-  filter: PropTypes.string,
+  ).isRequired,
+  deleteContact: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
