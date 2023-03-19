@@ -17,8 +17,8 @@ export class UserForm extends Component {
     e.preventDefault();
 
     this.props.createUser({
-      userName: this.state.name,
-      userNumber: this.state.number,
+      name: this.state.name,
+      number: this.state.number,
       id: nanoid(),
     });
 
@@ -48,12 +48,12 @@ export class UserForm extends Component {
           </div>
 
           <div className={css.inputWrapper}>
-            <label className={css.formLabel} htmlFor="userNumber">
+            <label className={css.formLabel} htmlFor="number">
               Phone Number
             </label>
             <input
               className={css.formInput}
-              id="UserNumber"
+              id="number"
               onChange={this.getInput}
               value={this.state.number}
               type="tel"

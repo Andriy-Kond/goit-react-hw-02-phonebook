@@ -7,20 +7,20 @@ import css from './App.module.css';
 export class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', userName: 'Rosie Simpson', userNumber: '459-12-56' },
-      { id: 'id-2', userName: 'Hermione Kline', userNumber: '443-89-12' },
-      { id: 'id-3', userName: 'Eden Clements', userNumber: '645-17-79' },
-      { id: 'id-4', userName: 'Annie Copeland', userNumber: '227-91-26' },
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
   };
 
   createUser = userData => {
     const isExist = this.state.contacts.find(contact => {
-      return contact.userName === userData.userName;
+      return contact.name === userData.name;
     });
     isExist
-      ? alert(`${userData.userName} is already in contacts`)
+      ? alert(`${userData.name} is already in contacts`)
       : this.setState(prevState => {
           return { contacts: [...prevState.contacts, userData] };
         });
@@ -32,7 +32,7 @@ export class App extends Component {
 
   filterContacts = () => {
     this.state.contacts.filter(contact =>
-      contact.userName.toLowerCase().includes(this.state.filter.toLowerCase())
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
   };
 
@@ -51,9 +51,14 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter filter={filter} getInput={this.getInput}></Filter>
         <Contacts
-          contacts={contacts}
+          contacts={
+            filter
+              ? contacts.filter(({ name }) =>
+                  name.toLowerCase().includes(filter.toLowerCase())
+                )
+              : contacts
+          }
           deleteContact={this.deleteContact}
-          filter={filter}
         ></Contacts>
       </div>
     );

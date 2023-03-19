@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 
-function MarkupContacts(userName, userNumber, id, deleteContact) {
+function MarkupContacts({ name, number, id, deleteContact }) {
   return (
-    <li className={css.listItem} key={id}>
-      {userName}: {userNumber}
+    <li className={css.listItem}>
+      {name}: {number}
       <button className={css.deleteBtn} onClick={() => deleteContact(id)}>
         Delete
       </button>
@@ -12,20 +12,19 @@ function MarkupContacts(userName, userNumber, id, deleteContact) {
   );
 }
 
-export const Contacts = ({ contacts, deleteContact, filter }) => {
+export const Contacts = ({ contacts, deleteContact }) => {
   return (
     <ul className={css.list}>
-      {filter
-        ? contacts
-            .filter(({ userName }) =>
-              userName.toLowerCase().includes(filter.toLowerCase())
-            )
-            .map(({ userName, userNumber, id }) => {
-              return MarkupContacts(userName, userNumber, id, deleteContact);
-            })
-        : contacts.map(({ userName, userNumber, id }) => {
-            return MarkupContacts(userName, userNumber, id, deleteContact);
-          })}
+      {contacts.map(({ name, number, id }) => {
+        return (
+          <MarkupContacts
+            key={id}
+            name={name}
+            number={number}
+            deleteContact={deleteContact}
+          ></MarkupContacts>
+        );
+      })}
     </ul>
   );
 };
@@ -34,10 +33,9 @@ Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string.isRequired,
-      userName: PropTypes.string.isRequired,
-      userNumber: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ).isRequired,
   deleteContact: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
 };
