@@ -22,7 +22,7 @@ export class UserForm extends Component {
       id: nanoid(),
     });
 
-    // Очистити поля форми:
+    // Очищення полів форми
     this.setState({ name: '', number: '' });
   };
 

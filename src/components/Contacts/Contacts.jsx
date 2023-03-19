@@ -18,9 +18,10 @@ export const Contacts = ({ contacts, deleteContact }) => {
       {contacts.map(({ name, number, id }) => {
         return (
           <MarkupContacts
-            key={id}
+            key={id} // це не можна передати як prop: `key` is not a prop
             name={name}
             number={number}
+            id={id}
             deleteContact={deleteContact}
           ></MarkupContacts>
         );
