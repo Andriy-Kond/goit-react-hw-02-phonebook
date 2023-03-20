@@ -19,11 +19,25 @@ export class App extends Component {
     const isExist = this.state.contacts.find(contact => {
       return contact.name === userData.name;
     });
-    isExist
-      ? alert(`${userData.name} is already in contacts`)
-      : this.setState(prevState => {
-          return { contacts: [...prevState.contacts, userData] };
-        });
+
+    // Умова через if для того, щоби додати додатковий return
+    if (isExist) {
+      alert(`${userData.name} is already in contacts`);
+    } else {
+      this.setState(prevState => {
+        return { contacts: [...prevState.contacts, userData] };
+      });
+
+      // Потрібен для перевірки чи доданий контакти, чи ні. Якщо ні, то поля не очищуємо.
+      return userData.name;
+    }
+
+    // Якщо треба очистити поля у будь-якому випадку, то можна через тернарник:
+    // isExist
+    //   ? alert(`${userData.name} is already in contacts`)
+    //   : this.setState(prevState => {
+    //       return { contacts: [...prevState.contacts, userData] };
+    //     });
   };
 
   getInput = ({ target: { name, value } }) => {
@@ -48,8 +62,10 @@ export class App extends Component {
       <div className={css.mainContainer}>
         <h1>Phonebook</h1>
         <UserForm createUser={this.createUser}></UserForm>
+
         <h2>Contacts</h2>
         <Filter filter={filter} getInput={this.getInput}></Filter>
+
         <Contacts
           contacts={
             filter

@@ -9,21 +9,24 @@ export class UserForm extends Component {
     number: '',
   };
 
+  // Встановлення значень state
   getInput = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
   setName = e => {
-    e.preventDefault();
+    e.preventDefault(); // Відміняю дію форми за замовчуванням
 
-    this.props.createUser({
+    // Виклик функції з App
+    // Додаткова змінна потрібна для перевірки чи доданий контакти, чи ні. Якщо ні, то поля не очищуємо.
+    const userName = this.props.createUser({
       name: this.state.name,
       number: this.state.number,
       id: nanoid(),
     });
 
     // Очищення полів форми
-    this.setState({ name: '', number: '' });
+    userName && this.setState({ name: '', number: '' });
   };
 
   render() {
